@@ -1,5 +1,7 @@
 package com.lin.entity;
 
+import java.util.List;
+
 public class Admin {
     private Integer adminId;
 
@@ -8,8 +10,19 @@ public class Admin {
     private String password;
 
     private String logintime;
+    
+    private List<VoteTheme> voteTheme;
 
-    public Integer getAdminId() {
+  
+	public List<VoteTheme> getVoteTheme() {
+		return voteTheme;
+	}
+
+	public void setVoteTheme(List<VoteTheme> voteTheme) {
+		this.voteTheme = voteTheme;
+	}
+
+	public Integer getAdminId() {
         return adminId;
     }
 
@@ -40,4 +53,12 @@ public class Admin {
     public void setLogintime(String logintime) {
         this.logintime = logintime == null ? null : logintime.trim();
     }
+  
+    @Override
+  	public String toString() {
+  		return "Admin [adminId=" + adminId + ", name=" + name + ", password="
+  				+ password + ", logintime=" + logintime + ", voteTheme="
+  				+ voteTheme + "]";
+  	}
+
 }

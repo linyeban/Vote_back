@@ -13,36 +13,55 @@
 		<result column="grade_y" property="gradeY" jdbcType="INTEGER" />
 		<result column="class_y" property="classY" jdbcType="INTEGER" />
 		<result column="admin_id" property="adminId" jdbcType="INTEGER" />
+		<!-- ofType指定students集合中的对象类型  一对多（定义在一方）-->
+		<collection property="VoteContent" ofType="com.lin.entity.VoteContent">
+			<id property="id" column="content_id" />
+			<result property="name" column="content" />
+		    <result property="name" column="count" />
+		</collection>
+		<collection property="Voter" ofType="com.lin.entity.Voter">
+			<id property="voterId" column="voter_id" />
+			<result property="ip" column="ip" />
+		    <result property="position" column="position" />
+			<result property="major" column="major" />
+			<result property="grade" column="grade" />
+			<result property="classes" column="class" />  
+		</collection>
 	</resultMap>
 	<sql id="Base_Column_List">
-		theme_id, title, create_date, end_date, type, publish, position_y, major_y,
+		theme_id, title, create_date, end_date, type, publish,
+		position_y, major_y,
 		grade_y,
 		class_y, admin_id
 	</sql>
 	<select id="findThemeById" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
-	<!--  select
-		<include refid="Base_Column_List" />
-		from vote_theme
-		where theme_id = #{themeId,jdbcType=INTEGER}-->	
-		select * from vote_theme WHERE theme_id=#{themeId} 
-		
+		<!-- select <include refid="Base_Column_List" /> from vote_theme where 
+			theme_id = #{themeId,jdbcType=INTEGER} -->
+		select * from vote_theme WHERE theme_id=#{themeId}
+
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from vote_theme
+		delete from
+		vote_theme
 		where theme_id = #{themeId,jdbcType=INTEGER}
 	</delete>
 	<insert id="addVoteTheme" parameterType="com.lin.entity.VoteTheme">
-		insert into vote_theme (theme_id, title, create_date,
+		insert into vote_theme
+		(theme_id, title, create_date,
 		end_date, type, publish,
-		position_y, major_y, grade_y,
+		position_y,
+		major_y, grade_y,
 		class_y, admin_id)
-		values (#{themeId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+		values
+		(#{themeId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
 		#{createDate,jdbcType=VARCHAR},
-		#{endDate,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{publish,jdbcType=INTEGER},
+		#{endDate,jdbcType=VARCHAR},
+		#{type,jdbcType=INTEGER}, #{publish,jdbcType=INTEGER},
 		#{positionY,jdbcType=VARCHAR}, #{majorY,jdbcType=VARCHAR},
 		#{gradeY,jdbcType=INTEGER},
-		#{classY,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER})
+		#{classY,jdbcType=INTEGER},
+		#{adminId,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="com.lin.entity.VoteTheme">
 		insert into vote_theme
@@ -156,15 +175,19 @@
 	<update id="updateByPrimaryKey" parameterType="com.lin.entity.VoteTheme">
 		update vote_theme
 		set title = #{title,jdbcType=VARCHAR},
-		create_date = #{createDate,jdbcType=VARCHAR},
+		create_date =
+		#{createDate,jdbcType=VARCHAR},
 		end_date = #{endDate,jdbcType=VARCHAR},
 		type = #{type,jdbcType=INTEGER},
 		publish = #{publish,jdbcType=INTEGER},
 		position_y = #{positionY,jdbcType=VARCHAR},
-		major_y = #{majorY,jdbcType=VARCHAR},
+		major_y =
+		#{majorY,jdbcType=VARCHAR},
 		grade_y = #{gradeY,jdbcType=INTEGER},
 		class_y = #{classY,jdbcType=INTEGER},
-		admin_id = #{adminId,jdbcType=INTEGER}
-		where theme_id = #{themeId,jdbcType=INTEGER}
+		admin_id =
+		#{adminId,jdbcType=INTEGER}
+		where theme_id =
+		#{themeId,jdbcType=INTEGER}
 	</update>
 </mapper>

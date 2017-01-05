@@ -12,7 +12,7 @@
 		<result property="password" column="password" />
 		<result property="logintime" column="logintime" />
 		<!-- ofType指定VoteTheme集合中的对象类型 -->
-		<collection property="students" ofType="com.lin.entity.VoteTheme">
+		<collection property="VoteTheme" ofType="com.lin.entity.VoteTheme">
 			<id property="themeId" column="theme_id"/>
 			<result property="title" column="title"/>
 			<result property="createDate" column="create_date"/>
