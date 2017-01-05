@@ -4,6 +4,28 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这块等于dao接口的实现  namespace必须和接口的类路径一样-->
 <mapper namespace="com.lin.dao.IAdminDao">
+	
+	<!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+	<resultMap type="com.lin.entity.Admin" id="AdminResultMap">
+		<id property="adminId" column="admin_id" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="logintime" column="logintime" />
+		<!-- ofType指定VoteTheme集合中的对象类型 -->
+		<collection property="students" ofType="com.lin.entity.VoteTheme">
+			<id property="themeId" column="theme_id"/>
+			<result property="title" column="title"/>
+			<result property="createDate" column="create_date"/>
+			<result property="endDate" column="end_date"/>
+			<result property="type" column="type"/>
+			<result property="publish" column="publish"/>
+			<result property="positionY" column="position_y"/>
+			<result property="majorY" column="major_y"/>
+			<result property="gradeY" column="grade_y"/>
+			<result property="classY" column="class_y"/>		
+		</collection>
+	</resultMap>
+	
 	<!-- findByName和 insertUser必须和接口中的方法名一样  返回一个User  就是刚才的别名  如果不弄别名要连类路径一起写 麻烦-->    
     <insert id="addAdmin" parameterType="com.lin.entity.Admin">
     	insert into admin  (name,password,logintime) value

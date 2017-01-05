@@ -19,5 +19,6 @@
 		<!--userMapper.xml装载进来  同等于把“dao”的实现装载进来 -->
 		<mapper resource="mapper/UserMapper.xml" />
 	    <mapper resource="mapper/AdminMapper.xml" />
+	     <mapper resource="mapper/VoteThemeMapper.xml" />
 	</mappers>
 </configuration> 

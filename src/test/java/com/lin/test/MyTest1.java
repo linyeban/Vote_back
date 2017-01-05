@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import com.lin.Util.MyBatisUtil;
 import com.lin.dao.IAdminDao;
+import com.lin.dao.IThemeDao;
 import com.lin.dao.IUserDao;
 import com.lin.entity.Admin;
 import com.lin.entity.User;
+import com.lin.entity.VoteTheme;
 
 //测试Mybatis
 public class MyTest1 {
@@ -41,6 +43,16 @@ public class MyTest1 {
 		Admin admin=new Admin();
 		admin=adminD.findNameById(5);
 		System.out.print(admin.getName());
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void testquerryTheme() {
+		SqlSession sqlSession = MyBatisUtil.getSession();
+		IThemeDao themeD = sqlSession.getMapper(IThemeDao.class);
+		VoteTheme theme=new VoteTheme();
+		theme=themeD.findThemeById(2);
+		System.out.print(theme.getClassY());
 		sqlSession.commit();
 	}
 		
