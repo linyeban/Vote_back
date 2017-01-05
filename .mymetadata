@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="vote"
+  id="myeclipse.1482314510727"
+  context-root="/org.zsl.hnust"
+  j2ee-spec="1.7"
+  archive="vote.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
