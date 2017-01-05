@@ -3,7 +3,7 @@
   type="WEB"
   name="vote"
   id="myeclipse.1482314510727"
-  context-root="/org.zsl.hnust"
+  context-root="/vote"
   j2ee-spec="1.7"
   archive="vote.war">
   <attributes>

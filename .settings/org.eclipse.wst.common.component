@@ -5,7 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <property name="java-output-path" value="/SSM/src/main/webapp/src/main/java"/>
-        <property name="context-root" value="/org.zsl.hnust"/>
+        <property name="java-output-path" value="/vote/src/main/webapp/src/main/java"/>
+        <property name="context-root" value="/vote"/>
     </wb-module>
 </project-modules>
