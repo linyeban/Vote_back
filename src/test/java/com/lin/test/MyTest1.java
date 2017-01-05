@@ -27,10 +27,20 @@ public class MyTest1 {
 		SqlSession sqlSession = MyBatisUtil.getSession();
 		IAdminDao adminD = sqlSession.getMapper(IAdminDao.class);
 		Admin admin1=new Admin();
-		admin1.setName("我是管理员");
+		admin1.setName("我是管理员1");
 		admin1.setPassword("1234");
 		admin1.setLogintime("22222222");
 		adminD.addAdmin(admin1);
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void testquerryadmin() {
+		SqlSession sqlSession = MyBatisUtil.getSession();
+		IAdminDao adminD = sqlSession.getMapper(IAdminDao.class);
+		Admin admin=new Admin();
+		admin=adminD.findNameById(5);
+		System.out.print(admin.getName());
 		sqlSession.commit();
 	}
 		
