@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lin.dao.voteRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.lin.entity.voteRecord" >
+<mapper namespace="com.lin.dao.IContentDao" >
+  <resultMap id="BaseResultMap" type="com.lin.entity.VoteRecord" >
     <id column="record" property="record" jdbcType="INTEGER" />
     <result column="vote_date" property="voteDate" jdbcType="INTEGER" />
     <result column="theme_id" property="themeId" jdbcType="INTEGER" />
@@ -43,13 +43,13 @@
     delete from vote_record
     where record = #{record,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lin.entity.voteRecord" >
+  <insert id="insert" parameterType="com.lin.entity.VoteRecord" >
     insert into vote_record (record, vote_date, theme_id, 
       voter_id)
     values (#{record,jdbcType=INTEGER}, #{voteDate,jdbcType=INTEGER}, #{themeId,jdbcType=INTEGER}, 
       #{voterId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.lin.entity.voteRecord" >
+  <insert id="insertSelective" parameterType="com.lin.entity.VoteRecord" >
     insert into vote_record
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="record != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lin.entity.voteRecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lin.entity.VoteRecord" >
     update vote_record
     <set >
       <if test="voteDate != null" >
@@ -95,7 +95,7 @@
     </set>
     where record = #{record,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lin.entity.voteRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.lin.entity.VoteRecord" >
     update vote_record
     set vote_date = #{voteDate,jdbcType=INTEGER},
       theme_id = #{themeId,jdbcType=INTEGER},

@@ -14,8 +14,17 @@ public class Voter {
     private Integer classes;
 
     private Integer themeId;
+    private VoteTheme voteTheme;
 
-    public Integer getVoterId() {
+    public VoteTheme getVoteTheme() {
+		return voteTheme;
+	}
+
+	public void setVoteTheme(VoteTheme voteTheme) {
+		this.voteTheme = voteTheme;
+	}
+
+	public Integer getVoterId() {
         return voterId;
     }
 
@@ -70,4 +79,13 @@ public class Voter {
     public void setThemeId(Integer themeId) {
         this.themeId = themeId;
     }
+
+	@Override
+	public String toString() {
+		return "Voter [voterId=" + voterId + ", ip=" + ip + ", position="
+				+ position + ", major=" + major + ", grade=" + grade
+				+ ", classes=" + classes + ", themeId=" + themeId
+				+ ", voteTheme=" + voteTheme + "]";
+	}
+    
 }

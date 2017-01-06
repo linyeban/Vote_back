@@ -44,4 +44,12 @@ public interface IContentDao {
 	 * @param voteId 投票编号
 	 * @return 投票数
 	 */
-	}
+	public Long findTotalCountByVoteId(Integer voteId);
+	/**
+	 * 通过投票主题编号查找对应的内容
+	 * @param voteId 投票编号
+	 * @return 投票数
+	 */
+	public VoteContent findContentByContentId(Integer contentId);
+
+}

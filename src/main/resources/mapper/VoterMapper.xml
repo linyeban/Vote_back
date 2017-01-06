@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lin.dao.voterMapper" >
-  <resultMap id="BaseResultMap" type="com.lin.entity.voter" >
+<mapper namespace="com.lin.dao.IVoterDao" >
+  <resultMap id="BaseResultMap" type="com.lin.entity.Voter" >
     <id column="voter_id" property="voterId" jdbcType="INTEGER" />
     <result column="ip" property="ip" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
@@ -9,11 +9,25 @@
     <result column="grade" property="grade" jdbcType="INTEGER" />
     <result column="classes" property="classes" jdbcType="INTEGER" />
     <result column="theme_id" property="themeId" jdbcType="INTEGER" />
+     <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->  
+		<association property="voteTheme" javaType="com.lin.entity.VoteTheme">
+			<id column="theme_id" property="themeId" jdbcType="INTEGER" />
+			<result column="title" property="title" jdbcType="VARCHAR" />
+			<result column="create_date" property="createDate" jdbcType="VARCHAR" />
+			<result column="end_date" property="endDate" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+			<result column="publish" property="publish" jdbcType="INTEGER" />
+			<result column="position_y" property="positionY" jdbcType="VARCHAR" />
+			<result column="major_y" property="majorY" jdbcType="VARCHAR" />
+			<result column="grade_y" property="gradeY" jdbcType="INTEGER" />
+			<result column="class_y" property="classY" jdbcType="INTEGER" />
+			<result column="admin_id" property="adminId" jdbcType="INTEGER" />
+		</association>
   </resultMap>
   <sql id="Base_Column_List" >
     voter_id, ip, position, major, grade, classes, theme_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="findVoterById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from voter
@@ -23,7 +37,7 @@
     delete from voter
     where voter_id = #{voterId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.lin.entity.voter" >
+  <insert id="addVoter" parameterType="com.lin.entity.Voter" >
     insert into voter (voter_id, ip, position, 
       major, grade, classes, 
       theme_id)
@@ -31,7 +45,7 @@
       #{major,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, #{classes,jdbcType=INTEGER}, 
       #{themeId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.lin.entity.voter" >
+  <insert id="insertSelective" parameterType="com.lin.entity.Voter" >
     insert into voter
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="voterId != null" >
@@ -80,7 +94,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lin.entity.voter" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lin.entity.Voter" >
     update voter
     <set >
       <if test="ip != null" >
@@ -104,7 +118,7 @@
     </set>
     where voter_id = #{voterId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lin.entity.voter" >
+  <update id="updateByPrimaryKey" parameterType="com.lin.entity.Voter" >
     update voter
     set ip = #{ip,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},

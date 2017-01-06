@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lin.dao.ContentDao">
+<mapper namespace="com.lin.dao.IContentDao">
 	<!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
 	<resultMap type="com.lin.entity.VoteContent" id="VoteContentResultMap">
 		<id property="contentId" column="content_id" />
 		<result property="name" column="content" />
 		<result property="name" column="count" />
+		 <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->  
+		<association property="VoteTheme" javaType="com.lin.entity.VoteTheme">
+			<id column="theme_id" property="themeId" jdbcType="INTEGER" />
+			<result column="title" property="title" jdbcType="VARCHAR" />
+			<result column="create_date" property="createDate" jdbcType="VARCHAR" />
+			<result column="end_date" property="endDate" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+			<result column="publish" property="publish" jdbcType="INTEGER" />
+			<result column="position_y" property="positionY" jdbcType="VARCHAR" />
+			<result column="major_y" property="majorY" jdbcType="VARCHAR" />
+			<result column="grade_y" property="gradeY" jdbcType="INTEGER" />
+			<result column="class_y" property="classY" jdbcType="INTEGER" />
+			<result column="admin_id" property="adminId" jdbcType="INTEGER" />
+		</association>
 	</resultMap>
 	<insert id="addVoteContent" parameterType="com.lin.entity.VoteContent">
 		insert into vote_content(content,count,theme_id)
-		value(#{content},#{count},#{theme_id})
+		value(#{content},#{count},#{themeId})
 	</insert>
+	<select id="findContentByContentId" parameterType="int" resultType="com.lin.entity.VoteContent">
+     select * from vote_content WHERE content_id=#{adminId} 
+    </select>
 
 </mapper>

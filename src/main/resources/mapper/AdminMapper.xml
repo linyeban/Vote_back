@@ -39,6 +39,6 @@
      select * from admin
     </select>
     <select id="findNameById" parameterType="int" resultType="com.lin.entity.Admin">
-     select * from admin WHERE admin_id=#{adminId} 
+     select * from admin WHERE admin_id=#{contentId} 
     </select>
 </mapper>

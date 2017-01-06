@@ -15,6 +15,8 @@ public interface IVoterDao {
 	 * @return Voter（Voter类型）
 	 */
 	public Voter findVoterByIp(String ip,Integer voteId);
+	
+	public Voter findVoterById(Integer voteId);
     int deleteByPrimaryKey(Integer voterId);
 
     int insert(Voter record);
