@@ -1,13 +1,14 @@
 package com.lin.entity;
 
 public class VoteRecord {
-    private Integer record;
+    private Integer recordId;
 
     private Integer voteDate;
 
     private Integer themeId;
 
     private Integer voterId;
+    
     
     
     /** 
@@ -35,15 +36,17 @@ public class VoteRecord {
 		this.voteTheme = voteTheme;
 	}
 
-	public Integer getRecord() {
-        return record;
-    }
 
-    public void setRecord(Integer record) {
-        this.record = record;
-    }
 
-    public Integer getVoteDate() {
+    public Integer getRecordId() {
+		return recordId;
+	}
+
+	public void setRecordId(Integer recordId) {
+		this.recordId = recordId;
+	}
+
+	public Integer getVoteDate() {
         return voteDate;
     }
 
@@ -69,7 +72,7 @@ public class VoteRecord {
 
 	@Override
 	public String toString() {
-		return "VoteRecord [record=" + record + ", voteDate=" + voteDate
+		return "VoteRecord [recordId=" + recordId + ", voteDate=" + voteDate
 				+ ", themeId=" + themeId + ", voterId=" + voterId
 				+ ", voteTheme=" + voteTheme + ", voter=" + voter + "]";
 	}

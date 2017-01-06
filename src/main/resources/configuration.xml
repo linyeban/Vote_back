@@ -24,6 +24,6 @@
 		<mapper resource="mapper/VoteThemeMapper.xml" />
 		<mapper resource="mapper/VoteContentMapper.xml" />
 		<mapper resource="mapper/VoterMapper.xml" />
-
+		<mapper resource="mapper/VoteRecordMapper.xml" />
 	</mappers>
 </configuration> 
