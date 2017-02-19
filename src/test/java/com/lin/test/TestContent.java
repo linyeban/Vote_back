@@ -20,7 +20,7 @@ public class TestContent {
 		SqlSession sqlSession = MyBatisUtil.getSession();
 		IContentDao contentDao = sqlSession.getMapper(IContentDao.class);
 		VoteContent voteContent=new VoteContent();
-		voteContent.setContent("内容一");
+		voteContent.setContent("aa");
 		voteContent.setContentId(1);
 		voteContent.setThemeId(2);
 		voteContent.setCount(5);
